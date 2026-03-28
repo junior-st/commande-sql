@@ -1,0 +1,37 @@
+-se connecter sur mariadb en utilisateur root:sudo mariadb;
+-creer un nouvelle utilisateur et son mot de passe:CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+-afficher la liste de tout les utilisateur de la la BD:SELECT `user` FROM `mysql`.`user` ;
+-donner tout les privilleges a un utlisateur sur une base :GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'localhost';
+-charger un script sql a partir d'un fichier source :SOURCE chemin/d'acces_du_fichier;
+-lister les bases de donnees accessible a un utilisateur:GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'localhost';
+-afficher toute une table: select * from nom_table;
+-suppprimer une BD : DROP DATABASE nom_bd
+-supprimer une table: DROP TABLE nom_table;
+-creer une table: crate table nom(
+  //champ
+  )
+-inserer les donnes :INSERT INTO table_name values(......);//INSERT INTO TABLE table_name(champs specifique a rempli) values(......);
+-pour supprimer une ligne:DELETE FROM student
+where condition and another condition;
+-pour regrouper selon un critere : GROUP BY;
+-pour extraire une sous-chaine dans une colonne: subst(column,1,4);
+-petite operation sur les colonnes: count ,sum,avg
+-widcard :pour identifier une chaine : where condition like %mot_cle%;
+-afficher par exemple le nombre de location par an: select count(date_emprunt) from materiel_location
+                                                      group by (select substr(date_emprunt,1,4));
+-afficher les ventes pour chaque:select count(date_emprunt),substr(date_emprunt,1,4) as annee 
+                                 from location_materiel 
+                                 group by substr(date_emprunt,1,4) order by date_emprunt asc;
+-pour faire des jointures multiples entre-tableau:
+SELECT m.nom, c.nom
+    -> FROM materiel m
+    -> JOIN location_materiel lm ON lm.id_materiel = m.id
+    -> JOIN location l ON l.id = lm.id_location
+    -> JOIN client c ON c.id = l.id_client
+    -> WHERE c.nom = 'BAILLY';
+-nom d'un materielle pas rendu(jointure entres les tables):
+  select materiel.nom
+    -> from materiel
+    -> join location_materiel l on materiel.id=l.id
+    -> where date_retour is null;
+
