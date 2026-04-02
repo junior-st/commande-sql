@@ -51,4 +51,12 @@ JOIN categorie_materiel cat_m ON m.id = cat_m.id_materiel
 JOIN categorie c ON cat_m.id_categorie = c.id
 GROUP BY m.id, m.nom
 HAVING COUNT(c.id) > 1;
+////////////////////////////////////////////////////
+SELECT c.nom, c.prenom,
+       COALESCE(SUM(m.prix), 0) AS total_depense
+FROM client c
+LEFT JOIN location l ON c.id = l.id_client
+LEFT JOIN location_materiel lm ON l.id = lm.id_location
+LEFT JOIN materiel m ON lm.id_materiel = m.id
+GROUP BY c.id, c.nom, c.prenom;
 
