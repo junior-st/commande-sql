@@ -34,4 +34,21 @@ SELECT m.nom, c.nom
     -> from materiel
     -> join location_materiel l on materiel.id=l.id
     -> where date_retour is null;
+//les materiel ayant plusieurs categorie
+m.nom, c.nom AS category
+    -> FROM materiel m
+    -> JOIN categorie_materiel cat_m ON m.id = cat_m.id_materiel
+    -> JOIN categorie c ON cat_m.id_categorie = c.id
+    -> WHERE m.id IN (
+    ->     SELECT id_materiel
+    ->     FROM categorie_materiel
+    ->     GROUP BY id_materiel
+    ->     HAVING COUNT(*) > 1
+    -> );
+SELECT m.nom, COUNT(c.id) AS nb_categories
+FROM materiel m
+JOIN categorie_materiel cat_m ON m.id = cat_m.id_materiel
+JOIN categorie c ON cat_m.id_categorie = c.id
+GROUP BY m.id, m.nom
+HAVING COUNT(c.id) > 1;
 
