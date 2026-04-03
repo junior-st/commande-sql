@@ -60,3 +60,5 @@ LEFT JOIN location_materiel lm ON l.id = lm.id_location
 LEFT JOIN materiel m ON lm.id_materiel = m.id
 GROUP BY c.id, c.nom, c.prenom;
 
+//
+SELECT SUM(`valeur`) AS `total`, `idCouleur` FROM `carte` WHERE `retournee` = 1 GROUP BY `idCouleur` HAVING `total` > 20;
