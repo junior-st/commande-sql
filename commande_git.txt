@@ -15,4 +15,7 @@ git remote add commande-sql https://github.com/junior-st/commande-sql.git
 //on copie la cle public dans le presse papier
 clip <~/.ssh/id_ed25519.pub (sur Windows )
 -relier le depot distant au depot locale vite fait: git remote add ===lienssh_du_depot===
+git branch -M main
+git push -u origin main
+En indiquant  origin  suivi du nom de la branche, ici  main , toutes les modifications faites sur la branche  main  seront bien envoyées sur cette branche et ne mettront pas à jour tout votre repository.
 
