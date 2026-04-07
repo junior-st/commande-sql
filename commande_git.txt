@@ -9,4 +9,10 @@ git config --global color.branch auto
 git config --global core.edit vim
 git config --global merge.tool vimdiff
 pour initialser un depot :git init ///
+git remote add commande-sql https://github.com/junior-st/commande-sql.git
+//établissons la connexion ssh avec le depot distant
+ ssh-keygen -t ed25519 -C "chakoutiojunior@gmail.com" //generation de notre cle privee/public
+//on copie la cle public dans le presse papier
+clip <~/.ssh/id_ed25519.pub (sur Windows )
+-relier le depot distant au depot locale vite fait: git remote add ===lienssh_du_depot===
 
