@@ -1,0 +1,12 @@
+configuration initial:
+dans la cli
+on de place dans le dossier qui va acceuilli notre projet git
+git config --global user.name "nom_du_compte_github"
+git config --global user.mail @email
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+git config --global core.edit vim
+git config --global merge.tool vimdiff
+pour initialser un depot :git init ///
+
