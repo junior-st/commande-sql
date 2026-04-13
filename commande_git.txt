@@ -1,21 +1,82 @@
-configuration initial:
-dans la cli
-on de place dans le dossier qui va acceuilli notre projet git
-git config --global user.name "nom_du_compte_github"
-git config --global user.mail @email
+//Configuration globale (une seule fois)
+git config --global user.name "TonNomGitHub"
+git config --global user.email "ton@email.com"
+
 git config --global color.diff auto
 git config --global color.status auto
 git config --global color.branch auto
-git config --global core.edit vim
-git config --global merge.tool vimdiff
-pour initialser un depot :git init ///
-git remote add commande-sql https://github.com/junior-st/commande-sql.git
-//établissons la connexion ssh avec le depot distant
- ssh-keygen -t ed25519 -C "chakoutiojunior@gmail.com" //generation de notre cle privee/public
-//on copie la cle public dans le presse papier
-clip <~/.ssh/id_ed25519.pub (sur Windows )
--relier le depot distant au depot locale vite fait: git remote add ===lienssh_du_depot===
-git branch -M main
-git push -u origin main
-En indiquant  origin  suivi du nom de la branche, ici  main , toutes les modifications faites sur la branche  main  seront bien envoyées sur cette branche et ne mettront pas à jour tout votre repository.
 
+git config --global core.editor vim
+git config --global merge.tool vimdiff
+//Initialiser un dépôt local
+cd chemin/vers/ton/projet
+git init
+//Lier un dépôt distant
+git remote add origin <URL_DU_DEPOT>
+git remote add origin git@github.com:username/repo.git(en ssh)
+//Configurer SSH (connexion sécurisée)
+Générer une clé SSH
+ssh-keygen -t ed25519 -C "ton@email.com"
+Copier la clé publique (Windows)
+clip < ~/.ssh/id_ed25519.pub
+ Ensuite :
+Va sur GitHub → Settings → SSH keys
+Colle la clé
+//Préparer la branche principale
+git branch -M main
+git push -u origin main(git push --set-upstream origin master
+//work_flow
+git status              # voir les changements
+git add .               # ajouter les fichiers
+git commit -m "message" # valider les changements
+git push                # envoyer vers GitHub
+//Récupérer un projet existant
+git clone <URL_DU_DEPOT>
+cd repo
+//git log --oneline       # historique simplifié
+git diff                # voir les différences
+git pull                # récupérer les modifications
+# créer une nouvelle branche
+git branch nom_branche
+
+# créer une branche ET se déplacer dessus
+git checkout -b nom_branche
+
+# (version moderne recommandée)
+git switch -c nom_branche
+
+# se déplacer sur une branche existante
+git checkout nom_branche
+
+# (version moderne)
+git switch nom_branche
+
+# afficher les branches locales
+git branch
+
+# afficher toutes les branches (locales + distantes)
+git branch -av
+
+# supprimer une branche (sécurisé)
+git branch -d nom_branche
+
+# supprimer une branche en force
+git branch -D nom_branche
+
+# sauvegarder les modifications sans commit
+git stash
+
+# restaurer les modifications sauvegardées
+git stash pop
+
+# afficher la liste des stash
+git stash list
+
+# afficher l'historique simplifié
+git log --oneline
+
+# afficher l'historique avec graphe (très utile)
+git log --oneline --graph --all
+
+# voir les différences non commit
+git diff
